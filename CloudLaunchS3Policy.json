@@ -1,0 +1,32 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": "s3:ListBucket",
+            "Resource": [
+                "arn:aws:s3:::cloudlaunch-site-bucket-jae25",
+                "arn:aws:s3:::cloudlaunch-private-bucket-jae25",
+                "arn:aws:s3:::cloudlaunch-visible-only-bucket-jae25"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:GetObject",
+                "s3:PutObject"
+            ],
+            "Resource": "arn:aws:s3:::cloudlaunch-private-bucket-jae25/*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::cloudlaunch-site-bucket-jae25/*"
+        },
+        {
+            "Effect": "Deny",
+            "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::cloudlaunch-visible-only-bucket-jae25/*"
+        }
+    ]
+}
